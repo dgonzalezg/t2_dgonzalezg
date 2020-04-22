@@ -1,0 +1,1 @@
+web: gunicorn t2_dgonzalezg.wsgi
