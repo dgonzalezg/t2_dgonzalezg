@@ -10,5 +10,6 @@ router.register(r'ingrediente', views.IngredientesViewSet)
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
     path('', include(router.urls)),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('hamburguesa/<int:id>/ingrediente/<int:id>/', views.HamburguesaViewSet, views.IngredientesViewSet),
 ]
