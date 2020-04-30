@@ -39,14 +39,14 @@ def burger_detail(request, pk):
      if request.method == 'PATCH':
           if 'id' in request.data.keys() or 'ingredientes' in request.data.keys():
                return Response(status=status.HTTP_400_BAD_REQUEST)
-          serializer = HamburguesaSerializer(burger,data=request.data)
+          serializer = HamburguesaSerializer(burger,data=request.data, context={'request': request})
           if serializer.is_valid():
                serializer.save()
                return Response(serializer.data)
           return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
      if request.method == 'DELETE':
           burger.delete()
-          return Response(status=status.HTTP_204_NO_CONTENT)
+          return Response(status=status.HTTP_200_OK)
      
 @api_view(['PUT','DELETE'])
 def burguer_update(request,burguer_id,ingredient_id):
